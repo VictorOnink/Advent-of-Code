@@ -13,7 +13,9 @@ def split_bag_into_compartments(rucksack_contents: list) -> list:
     rucksack_compartments = []
     for rucksack in rucksack_contents:
         number_of_items = len(rucksack)
-        rucksack_compartments.append([rucksack[:(number_of_items // 2)], rucksack[(number_of_items // 2):]])
+        rucksack_compartments.append(
+            [rucksack[:(number_of_items // 2)], rucksack[(number_of_items // 2):]]
+            )
     return rucksack_compartments
 
 def get_priority_scores(rucksack_compartments: list) -> None:
