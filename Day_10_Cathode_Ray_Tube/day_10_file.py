@@ -38,13 +38,11 @@ def print_screen(lines: List[str], signal_selection: List[int]):
     
 
 def print_pixel(screen_pixels, cycle, register):
-    row_number = cycle // 40
-    selected_pixel = cycle - row_number * 40 - 1
-    if abs((selected_pixel - register)) <= 1:
+    if abs(((cycle - 1) % 40 - register)) <= 1:
         screen_pixels += "#"
     else:
         screen_pixels += "."
-    if selected_pixel % 40 == 39:
+    if (cycle - 1) % 40 == 39:
         screen_pixels += "\n"
     return screen_pixels
 
