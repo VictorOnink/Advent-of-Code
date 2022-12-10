@@ -1,6 +1,8 @@
 from typing import List
 
-def load_puzzle_input(case: str) -> List[str]:
+PuzzleInput = List[str]
+
+def load_puzzle_input(case: str) -> PuzzleInput:
     if case == "puzzle":
         file_name = "Day_10_Cathode_Ray_Tube/puzzle_input.txt"
     else:
@@ -9,12 +11,12 @@ def load_puzzle_input(case: str) -> List[str]:
         lines = [x.strip() for x in f.readlines()]
     return lines
 
-def print_screen(lines: List[str], signal_selection: List[int]):
+def print_screen(lines: PuzzleInput, signal_selection: List[int]):
     register: int = 1
     cycle: int = 1
     signal_strengths: List[str] = [register * cycle]
 
-    screen_pixels = ""
+    screen_pixels: str = ""
 
     for line in lines:
         screen_pixels = print_pixel(screen_pixels, cycle, register)
@@ -37,7 +39,7 @@ def print_screen(lines: List[str], signal_selection: List[int]):
 
     
 
-def print_pixel(screen_pixels, cycle, register):
+def print_pixel(screen_pixels: str, cycle: int, register: int) -> str:
     if abs(((cycle - 1) % 40 - register)) <= 1:
         screen_pixels += "#"
     else:

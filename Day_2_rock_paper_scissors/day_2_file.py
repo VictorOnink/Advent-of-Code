@@ -1,4 +1,8 @@
-def load_puzzle_input() -> list:
+from typing import List
+
+PuzzleInput = List[str]
+
+def load_puzzle_input() -> PuzzleInput:
     with open("Day_2_rock_paper_scissors/puzzle_input.txt") as f:
         lines = [x.strip() for x in f.readlines()]
     return lines
@@ -21,8 +25,8 @@ def get_game_outcome_score(move_set: str) -> int:
         - paper = Y
         - scissors = Z
     """
-    move_opponent = move_set[0]
-    move_player = move_set[2]
+    move_opponent: str = move_set[0]
+    move_player: str = move_set[2]
 
     if (
         (move_player == "X") & (move_opponent == "A")
@@ -40,8 +44,8 @@ def get_game_outcome_score(move_set: str) -> int:
         return 0
 
 
-def compute_move_scores(moves: list) -> None:
-    move_scores = []
+def compute_move_scores(moves: PuzzleInput) -> None:
+    move_scores: List[int] = []
     for move_set in moves:
         move_scores.append(
             get_move_selection_score(move_set) + get_game_outcome_score(move_set)

@@ -5,7 +5,7 @@ def load_puzzle_input(case: str) -> np.array:
         file_name = "Day_8_Treetop_Tree_House/test_input.txt"
     elif case == 'puzzle':
         file_name = "Day_8_Treetop_Tree_House/puzzle_input.txt"
-    tree_grid = np.genfromtxt(file_name, delimiter=1)
+    tree_grid: np.array = np.genfromtxt(file_name, delimiter=1)
     tree_grid = tree_grid.astype(int)
     return tree_grid
 
@@ -20,7 +20,7 @@ def count_visible_tree(tree_grid: np.array) -> None:
 
     for row in range(1, tree_grid.shape[0] - 1):
         for column in range(1, tree_grid.shape[1] - 1):
-            tree = tree_grid[row, column]
+            tree: int = tree_grid[row, column]
             visibility_grid[row, column] = max(
                 tree > max(tree_grid[:row, column]),
                 tree > max(tree_grid[row + 1:, column]),
@@ -35,7 +35,7 @@ def get_scenic_score(tree_grid: np.array) -> None:
 
     for row in range(tree_grid.shape[0]):
         for column in range(tree_grid.shape[1]):
-            tree = tree_grid[row, column]
+            tree: int = tree_grid[row, column]
 
             if row == 0:
                 visibility_top = 0
@@ -58,7 +58,7 @@ def get_scenic_score(tree_grid: np.array) -> None:
     print(f"The maximum scenic score is {np.max(scenic_grid)}")
 
 def scenic_score_direction(tree_value: int, trees_line_of_view: np.array) -> int:
-    scenic_score = 0
+    scenic_score: int = 0
     for tree_height in trees_line_of_view:
         scenic_score += 1
         if tree_height >= tree_value:

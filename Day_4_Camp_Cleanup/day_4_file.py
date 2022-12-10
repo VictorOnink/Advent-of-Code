@@ -1,12 +1,15 @@
 import re
+from typing import List
 
-def load_puzzle_input() -> list:
+PuzzleInput = List[str]
+
+def load_puzzle_input() -> PuzzleInput:
     with open("Day_4_Camp_Cleanup/puzzle_input.txt") as f:
         lines = [x.strip() for x in f.readlines()]
     return lines
 
-def check_full_section_overlap(section_pairs: list) -> None:
-    overlap_counter = 0
+def check_full_section_overlap(section_pairs: PuzzleInput) -> None:
+    overlap_counter: int = 0
     for section_pair in section_pairs:
         range_1_min, range_1_max, range_2_min, range_2_max = [int(x) for x in re.split(",|-", section_pair)]
         
@@ -20,8 +23,8 @@ def check_full_section_overlap(section_pairs: list) -> None:
     print(f"We have {overlap_counter} ranges with complete overlap")
 
 
-def check_some_section_overlap(section_pairs: list) -> None:
-    overlap_counter = 0
+def check_some_section_overlap(section_pairs: PuzzleInput) -> None:
+    overlap_counter: int = 0
     for section_pair in section_pairs:
         range_1_min, range_1_max, range_2_min, range_2_max = [int(x) for x in re.split(",|-", section_pair)]
         

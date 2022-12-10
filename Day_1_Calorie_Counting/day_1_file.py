@@ -1,11 +1,16 @@
-def load_puzzle_input() -> list:
+from typing import List, Dict
+
+PuzzleInput = List[str]
+ElfPacks = Dict[int, Dict[str, List[int]]]
+
+def load_puzzle_input() -> PuzzleInput:
     with open("Day_1_Calorie_Counting/puzzle_input.txt") as f:
-        calorie_list = f.readlines()
+        calorie_list: PuzzleInput = f.readlines()
     return calorie_list
 
-def split_lines_to_elves(calorie_list: list) -> dict:
-    elf_pack = {0: {"calories": [], "total": []}}
-    elf_index = 0
+def split_lines_to_elves(calorie_list: PuzzleInput) -> ElfPacks:
+    elf_pack: ElfPacks = {0: {"calories": [], "total": []}}
+    elf_index: int = 0
     for calorie_item in calorie_list:
         if calorie_item != "\n":
             elf_pack[elf_index]["calories"].append(int(calorie_item.strip("\n")))
@@ -19,8 +24,8 @@ def split_lines_to_elves(calorie_list: list) -> dict:
 
     return elf_pack
 
-def get_N_elves_with_largest_packs(N: int, elf_pack: dict) -> None:
-    total_calories_per_pack = []
+def get_N_elves_with_largest_packs(N: int, elf_pack: ElfPacks) -> None:
+    total_calories_per_pack: List[int] = []
     for elf_calories in elf_pack.values():
         total_calories_per_pack.append(elf_calories["total"])
 

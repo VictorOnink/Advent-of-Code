@@ -1,10 +1,14 @@
-def load_puzzle_input() -> str:
+from typing import List
+
+PuzzleInput = List[str]
+
+def load_puzzle_input() -> PuzzleInput:
     with open("Day_6_Tuning_Trouble/puzzle_input.txt") as f:
         lines = [x.strip() for x in f.readlines()][0]
     return lines
 
-def detect_marker(datastream: str, unique_for_marker: int) -> int:
-    number_of_characters = len(datastream)
+def detect_marker(datastream: PuzzleInput, unique_for_marker: int) -> int:
+    number_of_characters: int = len(datastream)
 
     for index in range(unique_for_marker, number_of_characters):
         if len(set(datastream[(index - unique_for_marker): index])) == unique_for_marker:

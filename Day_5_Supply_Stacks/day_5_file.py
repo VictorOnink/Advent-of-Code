@@ -1,5 +1,7 @@
 import re
-import json
+from typing import List
+
+PuzzleInput = List[str]
 
 
 CRATE_CONFIGURATION = {
@@ -14,12 +16,12 @@ CRATE_CONFIGURATION = {
     9: ["Z", "S", "M", "B", "L", "N", "P", "H"]
 }
 
-def load_puzzle_input() -> list:
+def load_puzzle_input() -> PuzzleInput:
     with open("Day_5_Supply_Stacks/puzzle_input.txt") as f:
         lines = [x.strip() for x in f.readlines()]
     return lines
 
-def carry_out_crate_moves(crate_moves: list, crate_mover: str):
+def carry_out_crate_moves(crate_moves: PuzzleInput, crate_mover: str):
     for move in crate_moves:
         print(move)
         parsed_move = [x.strip() for x in re.split("move |from |to ", move)]
@@ -29,15 +31,15 @@ def carry_out_crate_moves(crate_moves: list, crate_mover: str):
     for stack in CRATE_CONFIGURATION.keys():
         print(stack, CRATE_CONFIGURATION[stack])
 
-def move_crates(number_of_crates, target, destination, crate_mover):
+def move_crates(number_of_crates: int, target: int, destination: int, crate_mover: str):
     # Moves one crate at a time, moving the top of the stack down
     if crate_mover == "crate_mover_9000":
-        for crate in range(number_of_crates):
-            crate_label = CRATE_CONFIGURATION[target].pop()
+        for _ in range(number_of_crates):
+            crate_label: str = CRATE_CONFIGURATION[target].pop()
             CRATE_CONFIGURATION[destination].append(crate_label)
     # Moves multiple crates at once
     if crate_mover == "crate_mover_9001":
-        crate_label = CRATE_CONFIGURATION[target][-number_of_crates:]
+        crate_label: str = CRATE_CONFIGURATION[target][-number_of_crates:]
         CRATE_CONFIGURATION[destination] += crate_label
         CRATE_CONFIGURATION[target] = CRATE_CONFIGURATION[target][:-number_of_crates]
     

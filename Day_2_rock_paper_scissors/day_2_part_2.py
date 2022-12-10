@@ -1,4 +1,7 @@
 from enum import Enum
+from typing import List
+
+PuzzleInput = List[str]
 
 
 class GameOutcome(Enum):
@@ -13,13 +16,13 @@ class GameMove(Enum):
     SCISSORS = 3
 
 
-def load_puzzle_input() -> list:
+def load_puzzle_input() -> PuzzleInput:
     with open("Day_2_rock_paper_scissors/puzzle_input.txt") as f:
         lines = [x.strip() for x in f.readlines()]
     return lines
 
 
-def compute_move_scores(moves: list) -> None:
+def compute_move_scores(moves: PuzzleInput) -> None:
     move_scores = []
     for move_set in moves:
         move_opponent = convert_symbol_to_move(move_set[0])
