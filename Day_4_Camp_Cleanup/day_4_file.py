@@ -3,16 +3,20 @@ from typing import List
 
 PuzzleInput = List[str]
 
+
 def load_puzzle_input() -> PuzzleInput:
     with open("Day_4_Camp_Cleanup/puzzle_input.txt") as f:
         lines = [x.strip() for x in f.readlines()]
     return lines
 
+
 def check_full_section_overlap(section_pairs: PuzzleInput) -> None:
     overlap_counter: int = 0
     for section_pair in section_pairs:
-        range_1_min, range_1_max, range_2_min, range_2_max = [int(x) for x in re.split(",|-", section_pair)]
-        
+        range_1_min, range_1_max, range_2_min, range_2_max = [
+            int(x) for x in re.split(",|-", section_pair)
+        ]
+
         range_1 = range(range_1_min, range_1_max + 1)
         range_2 = range(range_2_min, range_2_max + 1)
 
@@ -26,8 +30,10 @@ def check_full_section_overlap(section_pairs: PuzzleInput) -> None:
 def check_some_section_overlap(section_pairs: PuzzleInput) -> None:
     overlap_counter: int = 0
     for section_pair in section_pairs:
-        range_1_min, range_1_max, range_2_min, range_2_max = [int(x) for x in re.split(",|-", section_pair)]
-        
+        range_1_min, range_1_max, range_2_min, range_2_max = [
+            int(x) for x in re.split(",|-", section_pair)
+        ]
+
         range_1 = range(range_1_min, range_1_max + 1)
         range_2 = range(range_2_min, range_2_max + 1)
 
@@ -36,7 +42,6 @@ def check_some_section_overlap(section_pairs: PuzzleInput) -> None:
         elif (range_2_min in range_1) | (range_2_max in range_1):
             overlap_counter += 1
     print(f"We have {overlap_counter} ranges with some overlap")
-
 
 
 if __name__ == "__main__":

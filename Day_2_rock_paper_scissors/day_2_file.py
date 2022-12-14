@@ -2,6 +2,7 @@ from typing import List
 
 PuzzleInput = List[str]
 
+
 def load_puzzle_input() -> PuzzleInput:
     with open("Day_2_rock_paper_scissors/puzzle_input.txt") as f:
         lines = [x.strip() for x in f.readlines()]

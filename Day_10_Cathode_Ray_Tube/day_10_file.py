@@ -2,6 +2,7 @@ from typing import List
 
 PuzzleInput = List[str]
 
+
 def load_puzzle_input(case: str) -> PuzzleInput:
     if case == "puzzle":
         file_name = "Day_10_Cathode_Ray_Tube/puzzle_input.txt"
@@ -10,6 +11,7 @@ def load_puzzle_input(case: str) -> PuzzleInput:
     with open(file_name) as f:
         lines = [x.strip() for x in f.readlines()]
     return lines
+
 
 def print_screen(lines: PuzzleInput, signal_selection: List[int]):
     register: int = 1
@@ -22,14 +24,12 @@ def print_screen(lines: PuzzleInput, signal_selection: List[int]):
         screen_pixels = print_pixel(screen_pixels, cycle, register)
         cycle += 1
         signal_strengths.append(register * cycle)
-        
+
         if "addx" in line:
-            screen_pixels = print_pixel(screen_pixels, cycle, register)           
+            screen_pixels = print_pixel(screen_pixels, cycle, register)
             cycle += 1
             register += int(line.split()[1])
             signal_strengths.append(register * cycle)
-            
-
 
     sum_selected_signal_strengths = sum(signal_strengths[i] for i in signal_selection)
 
@@ -37,7 +37,6 @@ def print_screen(lines: PuzzleInput, signal_selection: List[int]):
 
     print(screen_pixels)
 
-    
 
 def print_pixel(screen_pixels: str, cycle: int, register: int) -> str:
     if abs(((cycle - 1) % 40 - register)) <= 1:
@@ -48,9 +47,9 @@ def print_pixel(screen_pixels: str, cycle: int, register: int) -> str:
         screen_pixels += "\n"
     return screen_pixels
 
+
 if __name__ == "__main__":
     lines = load_puzzle_input("puzzle")
 
     signal_selection = [19, 59, 99, 139, 179, 219]
     print_screen(lines, signal_selection)
-    

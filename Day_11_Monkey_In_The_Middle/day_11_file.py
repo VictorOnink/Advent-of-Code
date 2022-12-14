@@ -20,20 +20,21 @@ class Monkey:
             item_value *= self.operation_value
         elif self.operation_type == "old * old":
             item_value *= item_value
-        
+
         if case == 1:
             item_value = item_value // 3
         elif case == 2:
             item_value %= self.worry_mod
 
         if item_value % self.divisible_test == 0:
-            return self.true_target, item_value 
+            return self.true_target, item_value
         else:
             return self.false_target, item_value
 
 
 MonkeyGroup = List[Monkey]
 StolenItems = Dict[int, List[int]]
+
 
 def load_input(case: str) -> Tuple[MonkeyGroup, StolenItems]:
     if case == "puzzle":
@@ -54,7 +55,9 @@ def load_input(case: str) -> Tuple[MonkeyGroup, StolenItems]:
     for monkey in range(number_of_monkeys):
         monkey_id: int = int(lines[monkey * 6][7])
 
-        starting_items: List[int] = [int(x) for x in lines[monkey * 6 + 1].split(":")[1].split(",")]
+        starting_items: List[int] = [
+            int(x) for x in lines[monkey * 6 + 1].split(":")[1].split(",")
+        ]
 
         if "old * old" in lines[monkey * 6 + 2]:
             operation_type: str = "old * old"
@@ -71,12 +74,23 @@ def load_input(case: str) -> Tuple[MonkeyGroup, StolenItems]:
         false_target: int = int(lines[monkey * 6 + 5].split("to monkey")[1])
 
         items_per_monkey[monkey] += starting_items
-        group_of_monkeys.append(Monkey(monkey_id, divisible_test, true_target, false_target, operation_type, operation_value))
-        
+        group_of_monkeys.append(
+            Monkey(
+                monkey_id,
+                divisible_test,
+                true_target,
+                false_target,
+                operation_type,
+                operation_value,
+            )
+        )
+
     return group_of_monkeys, items_per_monkey
 
 
-def level_of_monkey_business(group_of_monkeys: MonkeyGroup, items_per_monkey: StolenItems, rounds: int, case: int):
+def level_of_monkey_business(
+    group_of_monkeys: MonkeyGroup, items_per_monkey: StolenItems, rounds: int, case: int
+):
     monkey_business: List[int] = [0] * len(group_of_monkeys)
 
     worry_mod: int = math.lcm(*[monkey.divisible_test for monkey in group_of_monkeys])
@@ -95,12 +109,15 @@ def level_of_monkey_business(group_of_monkeys: MonkeyGroup, items_per_monkey: St
                 monkey_business[monkey.id] += 1
 
     monkey_business.sort()
-    print(f"The monkey business of chasing the two worst monkeys is {monkey_business[-1] * monkey_business[-2]}")
+    print(
+        f"The monkey business of chasing the two worst monkeys is {monkey_business[-1] * monkey_business[-2]}"
+    )
+
 
 if __name__ == "__main__":
     load_file = "puzzle"
     group_of_monkeys, items_per_monkey = load_input(load_file)
-    level_of_monkey_business(group_of_monkeys, items_per_monkey, rounds = 20, case=1)
+    level_of_monkey_business(group_of_monkeys, items_per_monkey, rounds=20, case=1)
 
     group_of_monkeys, items_per_monkey = load_input(load_file)
-    level_of_monkey_business(group_of_monkeys, items_per_monkey, rounds = 10_000, case=2)
+    level_of_monkey_business(group_of_monkeys, items_per_monkey, rounds=10_000, case=2)

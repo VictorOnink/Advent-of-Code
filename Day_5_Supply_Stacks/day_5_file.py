@@ -13,13 +13,15 @@ CRATE_CONFIGURATION = {
     6: ["B", "W", "F", "T", "N"],
     7: ["B", "L", "D", "Q", "F", "H", "V", "N"],
     8: ["H", "P", "F", "R"],
-    9: ["Z", "S", "M", "B", "L", "N", "P", "H"]
+    9: ["Z", "S", "M", "B", "L", "N", "P", "H"],
 }
+
 
 def load_puzzle_input() -> PuzzleInput:
     with open("Day_5_Supply_Stacks/puzzle_input.txt") as f:
         lines = [x.strip() for x in f.readlines()]
     return lines
+
 
 def carry_out_crate_moves(crate_moves: PuzzleInput, crate_mover: str):
     for move in crate_moves:
@@ -30,6 +32,7 @@ def carry_out_crate_moves(crate_moves: PuzzleInput, crate_mover: str):
 
     for stack in CRATE_CONFIGURATION.keys():
         print(stack, CRATE_CONFIGURATION[stack])
+
 
 def move_crates(number_of_crates: int, target: int, destination: int, crate_mover: str):
     # Moves one crate at a time, moving the top of the stack down
@@ -42,7 +45,7 @@ def move_crates(number_of_crates: int, target: int, destination: int, crate_move
         crate_label: str = CRATE_CONFIGURATION[target][-number_of_crates:]
         CRATE_CONFIGURATION[destination] += crate_label
         CRATE_CONFIGURATION[target] = CRATE_CONFIGURATION[target][:-number_of_crates]
-    
+
 
 if __name__ == "__main__":
     crate_moves = load_puzzle_input()
