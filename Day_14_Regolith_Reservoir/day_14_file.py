@@ -1,7 +1,7 @@
 from typing import List, Tuple, Set
 
 PuzzleInput = List[str]
-CaveCoordinate = Tuple(int, int)
+CaveCoordinate = Tuple[int, int]
 RockPoints = Set[CaveCoordinate]
 SandPoints = Set[CaveCoordinate]
 
@@ -88,13 +88,15 @@ def drop_sand(
     sand_position = sand_entry
     can_move = True
     while can_move:
+        # Check above floor
+        above_floor = sand_position[1] + 1 <= floor_y
         # Otherwise try moving down
         if (
             all(
                 (sand_position[0], sand_position[1] + 1) not in x
                 for x in [all_sand, rock_face]
             )
-            and sand_position[1] + 1 <= floor_y
+            and above_floor
         ):
             sand_position = (sand_position[0], sand_position[1] + 1)
         # Try moving down and left
@@ -103,7 +105,7 @@ def drop_sand(
                 (sand_position[0] - 1, sand_position[1] + 1) not in x
                 for x in [all_sand, rock_face]
             )
-            and sand_position[1] + 1 <= floor_y
+            and above_floor
         ):
             sand_position = (sand_position[0] - 1, sand_position[1] + 1)
         # Try moving down and right
@@ -112,7 +114,7 @@ def drop_sand(
                 (sand_position[0] + 1, sand_position[1] + 1) not in x
                 for x in [all_sand, rock_face]
             )
-            and sand_position[1] + 1 <= floor_y
+            and above_floor
         ):
             sand_position = (sand_position[0] + 1, sand_position[1] + 1)
         # Acceptance that the sand is actually stuck
