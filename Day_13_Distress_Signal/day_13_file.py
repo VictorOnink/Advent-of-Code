@@ -73,7 +73,7 @@ def partition(signals: PuzzleInput, low: int, high: int):
     """Standard partition for the quicksort algorithm,"""
     pivot: SignalPacket = signals[high]
 
-    index = low - 1
+    index: int = low - 1
 
     for j in range(low, high):
         if check_order(signals[j], pivot) == OrderState.CORRECT:
