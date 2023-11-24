@@ -1,5 +1,6 @@
-from typing import List, Tuple, Set
-from advent_of_code.utils.data_loader import Day, PuzzleCase, Year, DATA_DIREC
+from typing import List, Set, Tuple
+
+from advent_of_code.utils.data_loader import DATA_DIREC, Day, PuzzleCase, Year
 
 PuzzleInput = List[str]
 CaveCoordinate = Tuple[int, int]
@@ -124,8 +125,10 @@ def drop_sand(
     return all_sand, sand_position
 
 
-def solution():
-    rock_coordinates = load_puzzle_input(year=Year(2022), day=Day(14), case=PuzzleCase("puzzle"))
+def solution(case: str):
+    rock_coordinates = load_puzzle_input(
+        year=Year(2022), day=Day(14), case=PuzzleCase(case)
+    )
 
     sand_entry: CaveCoordinate = (500, 0)
 

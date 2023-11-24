@@ -1,7 +1,8 @@
-import numpy as np
-from typing import List, Dict, Tuple, Set
-from advent_of_code.utils.data_loader import Day, PuzzleCase, Year, DATA_DIREC
+from typing import Dict, List, Set, Tuple
 
+import numpy as np
+
+from advent_of_code.utils.data_loader import DATA_DIREC, Day, PuzzleCase, Year
 
 PuzzleOutput = Tuple[Tuple[int], Tuple[int], np.array]
 ElevationGraph = Dict[Tuple[int], Dict[Tuple[int], int]]
@@ -106,7 +107,9 @@ def hill_climb_algorithm(point_E: Tuple[int], graph: ElevationGraph) -> PathDict
 
 
 def steps_from_any_a_level(
-    shortest_paths_from_E: PathDict, elevation_graph: ElevationGraph, elevation_grid: np.array
+    shortest_paths_from_E: PathDict,
+    elevation_graph: ElevationGraph,
+    elevation_grid: np.array,
 ) -> int:
     a_points = [
         point for point in elevation_graph.keys() if elevation_grid[point] == ord("a")
@@ -117,8 +120,10 @@ def steps_from_any_a_level(
     return shortest_path_from_a
 
 
-def solution():
-    point_S, point_E, elevation_grid = load_puzzle_input(year=Year(2022), day=Day(12), case=PuzzleCase("puzzle"))
+def solution(case: str):
+    point_S, point_E, elevation_grid = load_puzzle_input(
+        year=Year(2022), day=Day(12), case=PuzzleCase(case)
+    )
 
     elevation_graph = make_elevation_graph(elevation_grid)
 
@@ -128,7 +133,9 @@ def solution():
         f"The number of steps in the shortest path from {point_S=} to {point_E=} is {shortest_paths_from_E[point_S]} steps"
     )
 
-    shortest_path_a = steps_from_any_a_level(shortest_paths_from_E, elevation_graph, elevation_grid)
+    shortest_path_a = steps_from_any_a_level(
+        shortest_paths_from_E, elevation_graph, elevation_grid
+    )
 
     print(
         f"The number of steps in the shortest path from any elevation a to {point_E=} is {shortest_path_a} steps"

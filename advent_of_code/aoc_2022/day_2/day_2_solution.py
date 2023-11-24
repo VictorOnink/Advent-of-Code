@@ -124,9 +124,9 @@ def move_against_opponent_paper(needed_outcome: GameOutcome) -> GameMove:
         return GameMove.ROCK
 
 
-def solution() -> None:
+def solution(case: str) -> None:
     game_moves: PuzzleInput = load_puzzle_input(
-        year=Year(2022), day=Day(2), case=PuzzleCase("puzzle")
+        year=Year(2022), day=Day(2), case=PuzzleCase(case)
     )
 
     compute_move_scores_part_1(game_moves)

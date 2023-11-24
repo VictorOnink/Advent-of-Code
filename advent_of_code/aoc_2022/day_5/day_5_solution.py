@@ -40,10 +40,8 @@ def move_crates(number_of_crates: int, target: int, destination: int, crate_move
         CRATE_CONFIGURATION[target] = CRATE_CONFIGURATION[target][:-number_of_crates]
 
 
-def solution():
-    crate_moves = load_puzzle_input(
-        year=Year(2022), day=Day(5), case=PuzzleCase("puzzle")
-    )
+def solution(case: str):
+    crate_moves = load_puzzle_input(year=Year(2022), day=Day(5), case=PuzzleCase(case))
 
     carry_out_crate_moves(crate_moves, "crate_mover_9000")
 

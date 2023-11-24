@@ -1,7 +1,8 @@
-from dataclasses import dataclass
-from typing import List, Dict, Tuple
 import math
-from advent_of_code.utils.data_loader import Day, PuzzleCase, Year, DATA_DIREC
+from dataclasses import dataclass
+from typing import Dict, List, Tuple
+
+from advent_of_code.utils.data_loader import DATA_DIREC, Day, PuzzleCase, Year
 
 
 @dataclass
@@ -37,7 +38,9 @@ MonkeyGroup = List[Monkey]
 StolenItems = Dict[int, List[int]]
 
 
-def load_input(year: Year, day: Day, case: PuzzleCase) -> Tuple[MonkeyGroup, StolenItems]:
+def load_input(
+    year: Year, day: Day, case: PuzzleCase
+) -> Tuple[MonkeyGroup, StolenItems]:
     file_name = DATA_DIREC.joinpath(
         f"aoc_{year.value}/day_{day.value}/{case.value}_input.txt"
     )
@@ -114,9 +117,13 @@ def level_of_monkey_business(
     )
 
 
-def solution():
-    group_of_monkeys, items_per_monkey = load_input(year=Year(2022), day=Day(11), case=PuzzleCase("puzzle"))
+def solution(case: str):
+    group_of_monkeys, items_per_monkey = load_input(
+        year=Year(2022), day=Day(11), case=PuzzleCase(case)
+    )
     level_of_monkey_business(group_of_monkeys, items_per_monkey, rounds=20, case=1)
 
-    group_of_monkeys, items_per_monkey = load_input(year=Year(2022), day=Day(11), case=PuzzleCase("puzzle"))
+    group_of_monkeys, items_per_monkey = load_input(
+        year=Year(2022), day=Day(11), case=PuzzleCase(case)
+    )
     level_of_monkey_business(group_of_monkeys, items_per_monkey, rounds=10_000, case=2)

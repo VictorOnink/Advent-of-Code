@@ -50,9 +50,9 @@ def get_priority_scores_per_group_elves(rucksack_contents: List[str]) -> None:
     print(f"The total priority score is {total_priority_score}")
 
 
-def solution():
+def solution(case: str):
     rucksack_contents = load_puzzle_input(
-        year=Year(2022), day=Day(3), case=PuzzleCase("puzzle")
+        year=Year(2022), day=Day(3), case=PuzzleCase(case)
     )
 
     rucksack_compartments = split_bag_into_compartments(rucksack_contents)

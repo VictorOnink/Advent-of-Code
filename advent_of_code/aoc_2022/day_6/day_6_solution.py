@@ -13,10 +13,10 @@ def detect_marker(datastream: PuzzleInput, unique_for_marker: int) -> int:
             return index
 
 
-def solution():
-    datastream = load_puzzle_input(
-        year=Year(2022), day=Day(6), case=PuzzleCase("puzzle")
-    )[0]
+def solution(case: str):
+    datastream = load_puzzle_input(year=Year(2022), day=Day(6), case=PuzzleCase(case))[
+        0
+    ]
 
     marker_position = detect_marker(datastream, unique_for_marker=4)
     print(f"First marker after position {marker_position}")
