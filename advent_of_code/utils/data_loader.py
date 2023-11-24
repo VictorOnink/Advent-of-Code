@@ -57,6 +57,20 @@ class PuzzleCase(Enum):
     PUZZLE: str = "puzzle"
 
 
+def get_input_file_name(year: Year, day: Day, case: PuzzleCase):
+    """
+    This returns the path to the puzzle input
+
+    Args:
+        year (Year): year of the puzzle
+        day (Day): day of the puzzle
+        case (PuzzleCase): Either "puzzle" or "test"
+    """
+    return DATA_DIREC.joinpath(
+        f"aoc_{year.value}/day_{day.value}/{case.value}_input.txt"
+    )
+
+
 def load_puzzle_input(
     year: Year, day: Day, case: PuzzleCase, with_strip: bool = True
 ) -> List[str]:
@@ -73,9 +87,7 @@ def load_puzzle_input(
         PuzzleInput: puzzle input as a list of strings, where each string
                      corresponds to one line of the input
     """
-    file_name = DATA_DIREC.joinpath(
-        f"aoc_{year.value}/day_{day.value}/{case.value}_input.txt"
-    )
+    file_name = get_input_file_name(year, day, case)
 
     with open(file_name) as f:
         if with_strip:

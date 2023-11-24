@@ -89,8 +89,8 @@ def find_minimum_deletable_size(all_directory_sizes: Dict[Path, int]) -> None:
     )
 
 
-def solution():
-    commands = load_puzzle_input(year=Year(2022), day=Day(7), case=PuzzleCase("puzzle"))
+def solution(case: str):
+    commands = load_puzzle_input(year=Year(2022), day=Day(7), case=PuzzleCase(case))
 
     directory_structure = get_directory_structure(commands)
 

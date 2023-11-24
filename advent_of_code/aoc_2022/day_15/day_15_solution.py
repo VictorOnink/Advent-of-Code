@@ -1,8 +1,9 @@
-from typing import List, Tuple, Set
+from typing import List, Set, Tuple
+
 from parse import compile
 from tqdm import tqdm
-from advent_of_code.utils.data_loader import Day, PuzzleCase, Year, DATA_DIREC
 
+from advent_of_code.utils.data_loader import DATA_DIREC, Day, PuzzleCase, Year
 
 Coordinate = Tuple[int]
 SensorBeaconCoordinates = List[List[Coordinate]]
@@ -10,7 +11,9 @@ SensorCoverage = Set[Coordinate]
 SensorSearchRadii = List[int]
 
 
-def load_puzzle_input(year: Year, day: Day, case: PuzzleCase) -> SensorBeaconCoordinates:
+def load_puzzle_input(
+    year: Year, day: Day, case: PuzzleCase
+) -> SensorBeaconCoordinates:
     file_name = DATA_DIREC.joinpath(
         f"aoc_{year.value}/day_{day.value}/{case.value}_input.txt"
     )
@@ -96,12 +99,13 @@ def get_distress_beacon(
                         return point
 
 
-def solution():
-    case = "puzzle"
+def solution(case: str):
     target_line = {"test": 10, "puzzle": 2_000_000}[case]
     search_domain = {"test": 20, "puzzle": 4_000_000}[case]
 
-    sensor_coordinates: SensorBeaconCoordinates = load_puzzle_input(year=Year(2022), day=Day(15), case=PuzzleCase(case))
+    sensor_coordinates: SensorBeaconCoordinates = load_puzzle_input(
+        year=Year(2022), day=Day(15), case=PuzzleCase(case)
+    )
 
     sensor_search_radii: SensorSearchRadii = get_search_radii(sensor_coordinates)
 

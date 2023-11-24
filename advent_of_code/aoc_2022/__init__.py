@@ -29,5 +29,5 @@ SOLUTIONS_2022 = {
     12: solution_day_12,
     13: solution_day_13,
     14: solution_day_14,
-    15: solution_day_15
+    15: solution_day_15,
 }

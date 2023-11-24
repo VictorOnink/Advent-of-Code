@@ -1,9 +1,11 @@
 from argparse import ArgumentParser
 
 from advent_of_code.aoc_2022 import SOLUTIONS_2022
+from advent_of_code.aoc_2021 import SOLUTIONS_2021
 
 SOLUTIONS = {
-    2022: SOLUTIONS_2022
+    2022: SOLUTIONS_2022,
+    2021: SOLUTIONS_2021
 }
 
 if __name__ == "__main__":
@@ -19,4 +21,4 @@ if __name__ == "__main__":
 
     solution = SOLUTIONS[args.year][args.day]
 
-    solution()
+    solution(args.case)

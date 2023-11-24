@@ -79,8 +79,8 @@ def check_diagonal(head: Coordinate, tail: Coordinate) -> bool:
     return (head[0] != tail[0]) and (head[1] != tail[1])
 
 
-def solution():
-    lines = load_puzzle_input(year=Year(2022), day=Day(9), case=PuzzleCase("puzzle"))
+def solution(case: str):
+    lines = load_puzzle_input(year=Year(2022), day=Day(9), case=PuzzleCase(case))
 
     track_rope_N_knots(lines, N=2)
 

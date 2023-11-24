@@ -41,9 +41,9 @@ def get_n_elves_with_largest_packs(N: int, elf_pack: ElfPacks) -> None:
     )
 
 
-def solution() -> None:
+def solution(case: str) -> None:
     calorie_list: PuzzleInput = load_puzzle_input(
-        year=Year(2022), day=Day(1), case=PuzzleCase("puzzle"), with_strip=False
+        year=Year(2022), day=Day(1), case=PuzzleCase(case), with_strip=False
     )
 
     elf_pack = split_lines_to_elves(calorie_list)

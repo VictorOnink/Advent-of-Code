@@ -1,7 +1,9 @@
-from typing import List, Union
 from enum import Enum, auto
-from advent_of_code.utils.data_loader import Day, PuzzleCase, Year, DATA_DIREC
+from typing import List, Union
+
+from advent_of_code.utils.data_loader import DATA_DIREC, Day, PuzzleCase, Year
 from advent_of_code.utils.objects import PuzzleInput
+
 
 class OrderState(Enum):
     INCONCLUSIVE = auto()
@@ -90,8 +92,8 @@ def quick_sort(signals: PuzzleInput, low: int, high: int):
         quick_sort(signals, partition_index + 1, high)
 
 
-def solution():
-    signals = load_puzzle_input(year=Year(2022), day=Day(13), case=PuzzleCase("puzzle"))
+def solution(case: str):
+    signals = load_puzzle_input(year=Year(2022), day=Day(13), case=PuzzleCase(case))
     print_sum_integers(signals)
 
     signals += [[[2]], [[6]]]

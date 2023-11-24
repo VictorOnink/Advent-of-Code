@@ -38,9 +38,9 @@ def check_some_section_overlap(section_pairs: PuzzleInput) -> None:
     print(f"We have {overlap_counter} ranges with some overlap")
 
 
-def solution():
+def solution(case: str):
     section_pairs = load_puzzle_input(
-        year=Year(2022), day=Day(4), case=PuzzleCase("puzzle")
+        year=Year(2022), day=Day(4), case=PuzzleCase(case)
     )
 
     check_full_section_overlap(section_pairs)

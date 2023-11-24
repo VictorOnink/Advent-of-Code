@@ -81,10 +81,8 @@ def scenic_score_direction(tree_value: int, trees_line_of_view: np.array) -> int
     return scenic_score
 
 
-def solution():
-    tree_grid = load_puzzle_input(
-        year=Year(2022), day=Day(8), case=PuzzleCase("puzzle")
-    )
+def solution(case: str):
+    tree_grid = load_puzzle_input(year=Year(2022), day=Day(8), case=PuzzleCase(case))
 
     count_visible_tree(tree_grid)
 

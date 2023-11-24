@@ -4,7 +4,6 @@ from advent_of_code.utils.data_loader import Day, PuzzleCase, Year, load_puzzle_
 from advent_of_code.utils.objects import PuzzleInput
 
 
-
 def print_screen(lines: PuzzleInput, signal_selection: List[int]):
     register: int = 1
     cycle: int = 1
@@ -40,8 +39,8 @@ def print_pixel(screen_pixels: str, cycle: int, register: int) -> str:
     return screen_pixels
 
 
-def solution():
-    lines = load_puzzle_input(year=Year(2022), day=Day(10), case=PuzzleCase("puzzle"))
+def solution(case: str):
+    lines = load_puzzle_input(year=Year(2022), day=Day(10), case=PuzzleCase(case))
 
     signal_selection = [19, 59, 99, 139, 179, 219]
     print_screen(lines, signal_selection)
