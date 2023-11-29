@@ -2,8 +2,10 @@ from argparse import ArgumentParser
 
 from advent_of_code.aoc_2022 import SOLUTIONS_2022
 from advent_of_code.aoc_2021 import SOLUTIONS_2021
+from advent_of_code.aoc_2023 import SOLUTIONS_2023
 
 SOLUTIONS = {
+    2023: SOLUTIONS_2023,
     2022: SOLUTIONS_2022,
     2021: SOLUTIONS_2021
 }

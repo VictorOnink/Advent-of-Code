@@ -50,4 +50,3 @@ def solution(case: str) -> None:
     x_sub, z_sub = get_coordinates_with_aim(directions)
 
     print(f"The product of the submarine coordinates wtih aim is {x_sub * z_sub}")
-
