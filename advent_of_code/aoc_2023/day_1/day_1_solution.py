@@ -32,7 +32,7 @@ def find_calibration_values(document: PuzzleInput) -> List[str]:
     return values
 
 
-def get_all_numbers_from_row(row: str):
+def get_all_numbers_from_row(row: str) -> List[str]:
     all_numbers: List[str] = list()
     for char_index in range(len(row)):
         if row[char_index].isnumeric():
@@ -46,7 +46,7 @@ def get_all_numbers_from_row(row: str):
     return all_numbers
 
 
-def find_calibration_values_spelled(document: PuzzleInput):
+def find_calibration_values_spelled(document: PuzzleInput) -> List[str]:
     values: List[str] = list()
 
     for row in document:
