@@ -6,3 +6,4 @@ black:
 
 solution:
 	python run_solution.py --year $(YEAR) --day $(DAY) --case $(CASE)
+
